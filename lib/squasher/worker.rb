@@ -73,6 +73,8 @@ module Squasher
         end
 
         return unless Squasher.rake("db:migrate VERSION=#{ finish_timestamp }", :db_migrate)
+        
+        Squasher.rake("db:schema:dump", :db_migrate)
 
         yield
 
